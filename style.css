@@ -1,0 +1,21 @@
+.game {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #38536f;
+    color: rgb(159, 153, 153);
+    border: 6px solid #90beed;
+    border-radius: 8px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+.game > div {
+    border: 6px solid #43505e;
+    border-radius: 2px;
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
