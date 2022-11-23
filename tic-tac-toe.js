@@ -28,20 +28,41 @@ make_play: function(position){
     if (this.board[position] === ''){
         this.board[position] = this.simbols.options [this.simbols.turn_index];
         this.draw();
-        this.simbols.change();
+        let winning_sequences_index= this.check_winning_sequences ( this.simbols.options [this.simbols.turn_index ] );
+        if (winning_sequences_index >=0 ){
+            this.game_is_over();
+        } else {
+            this.simbols.change();
+        }
+        return true;
+    } else{
+        return false; 
     }
 },
+game_is_over: function() {
+    this.gameover = true;
+    console.log("GAME OVER");
+
+},
+
+start: function(){
+    this.board.fill('');
+    this.draw();
+    this.gameover = false;
+},
+
 check_winning_sequences: function(simbol){
     for ( i in this.winning_sequences ){
         if (this.board [this.winning_sequences[i][0] ] == simbol &&
             this.board [this.winning_sequences[i][1] ] == simbol &&
             this.board [this.winning_sequences[i][2] ] == simbol){
-                return i;
                 console.log('Sequencia Vencedora: ' + i);
+                return i;
+                
             }
     };
     return -1;
-}
+},
     draw: function(){
         let content= '';
 
